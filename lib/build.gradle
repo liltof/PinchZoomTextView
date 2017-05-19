@@ -1,16 +1,17 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "$build_tools_version"
+    def globalConfigurations = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfigurations["androidCompileSdkVersion"]
+    buildToolsVersion globalConfigurations["androidBuildToolsVersion"]
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion globalConfigurations["androidMinSdkVersion"]
+        targetSdkVersion globalConfigurations["androidTargetSdkVersion"]
 
-        def globalConfiguration = rootProject.extensions.getByName("ext")
-        versionCode globalConfiguration["library_version_code"]
-        versionName "$library_version_number"
+        versionCode globalConfigurations["libraryVersionCode"]
+        versionName globalConfigurations["libraryVersionNumber"]
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -34,7 +35,7 @@ dependencies {
 ext {
     PUBLISH_GROUP_ID = 'com.androidessence'
     PUBLISH_ARTIFACT_ID = 'pinchzoomtextview'
-    PUBLISH_VERSION = "$library_version_number"
+    PUBLISH_VERSION = "${libraryVersionNumber}"
 }
 
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
