@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         enableToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean newEnabledState = !textView.isZoomEnabled();
+                boolean newEnabledState = !textView.getZoomEnabled();
                 textView.setZoomEnabled(newEnabledState);
                 enableToggle.setText(
                         newEnabledState ? getString(R.string.zoom_enabled) : getString(R.string.zoom_disabled)
