@@ -5,7 +5,7 @@ android {
     buildToolsVersion "$build_tools_version"
     defaultConfig {
         applicationId "com.androidessence.pinchzoomtextview.sample"
-        minSdkVersion 16
+        minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
