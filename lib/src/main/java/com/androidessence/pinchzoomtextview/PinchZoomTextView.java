@@ -18,6 +18,7 @@ public class PinchZoomTextView extends TextView {
      */
     private static final float STEP = 200;
 
+    private int maxZoom = -1;
     /**
      * The ratio of the text size compared to its original.
      */
@@ -89,6 +90,7 @@ public class PinchZoomTextView extends TextView {
                 float delta = (distance - baseDistance) / STEP;
                 float multi = (float) Math.pow(2, delta);
                 ratio = Math.min(1024.0f, Math.max(0.1f, baseRatio * multi));
+                if (ratio + 13 < 100)
                 setTextSize(ratio + 13);
             }
         }
@@ -117,5 +119,13 @@ public class PinchZoomTextView extends TextView {
      */
     public boolean isZoomEnabled() {
         return zoomEnabled;
+    }
+
+    public int getMaxZoom() {
+        return maxZoom;
+    }
+
+    public void setMaxZoom(int maxZoom) {
+        this.maxZoom = maxZoom;
     }
 }
